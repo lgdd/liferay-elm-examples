@@ -18,7 +18,7 @@
 
 .fetch-virtual-instances p,
 .fetch-virtual-instances a {
-  font-size: calc(10px + 2vmin);
+  font-size: calc(6px + 1vmin);
 }
 
 .fetch-virtual-instances code {
