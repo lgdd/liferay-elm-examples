@@ -2,7 +2,7 @@ version: "3"
 services:
   liferay:
     build:
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/liferay/Dockerfile
       context: .
       args:
         - LIFERAY_IMAGE=liferay/portal:7.3.5-ga6

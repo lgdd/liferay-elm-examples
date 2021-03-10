@@ -67,25 +67,29 @@ view : Model -> Html Msg
 view model =
     case model of
         Failure ->
-            div [ class "alert alert-danger", attribute "role" "alert" ]
-                [ p [ class "text-center" ] [ text "Looks Something went wrong when fetch the list of virtual instances." ]
+            div [ class "fetch-virtual-instances" ]
+                [ div [ class "alert alert-danger", attribute "role" "alert" ]
+                    [ p [ class "text-center" ] [ text "Looks Something went wrong when fetch the list of virtual instances." ]
+                    ]
                 ]
 
         Loading ->
-            span [ class "loading-animation loading-animation" ] []
+            div [ class "fetch-virtual-instances" ]
+                [ span [ class "loading-animation loading-animation" ] []
+                ]
 
         Success virtualInstances ->
-            div [ class "my-elm-project" ]
+            div [ class "fetch-virtual-instances" ]
                 [ h1 [ class "text-center mb-4" ] [ text "Virtual Instances" ]
                 , div [ class "container" ]
                     [ table [ class "table table-hover" ]
                         [ thead []
-                            [ tr [ class "text-center" ]
-                                [ th [] [ text "Company ID" ]
-                                , th [] [ text "Domain" ]
-                                , th [] [ text "Web ID" ]
-                                , th [] [ text "Virtual Host" ]
-                                , th [] [ text "Active" ]
+                            [ tr []
+                                [ th [ class "text-center" ] [ text "Company ID" ]
+                                , th [ class "text-center" ] [ text "Domain" ]
+                                , th [ class "text-center" ] [ text "Web ID" ]
+                                , th [ class "text-center" ] [ text "Virtual Host" ]
+                                , th [ class "text-center" ] [ text "Active" ]
                                 ]
                             ]
                         , tbody
@@ -136,7 +140,7 @@ getVirtualInstances flags =
         "development" ->
             Http.request
                 { method = "GET"
-                , headers = [ Http.header "Authorization" (flags.basicAuth) ]
+                , headers = [ Http.header "Authorization" flags.basicAuth ]
                 , url = flags.host ++ "/o/headless-portal-instances/v1.0/portal-instances"
                 , body = Http.emptyBody
                 , expect = Http.expectJson GotVirtualInstances virtualInstanceListDecoder

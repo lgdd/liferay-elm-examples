@@ -1,7 +1,6 @@
 build/
 build.liferay/
 src.liferay/
-deploy.liferay/*.jar
 elm-stuff
 repl-temp-*
 node_modules
@@ -9,4 +8,4 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.idea/
+.idea
